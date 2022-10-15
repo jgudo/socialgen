@@ -32,11 +32,11 @@ const VerifyEmailMessage: React.FC<IProps> = ({ url, size, className }) => {
           <p className="text-green-600 text-sm inline-block font-bold">Verification mail has been sent to your email {st.auth.email}!</p>
         ) : (
           <>
-            <p className="text-gray-600 dark:text-orange-600 text-sm inline-block">Verify your email so that you can comment on post and manage your account.</p>
+            <p className="text-gray-600 dark:text-orange-600 text-sm inline-block">Verify your email so you won't lose access to your account.</p>
             <button
               disabled={st.isSendingVerificationMail}
               onClick={onClickVerify}
-              className="button-warning text-xs px-3 py-1"
+              className="button-warning text-xs px-3 py-1 shrink-0"
             >
               {st.isSendingVerificationMail ? <AiOutlineLoading className="animate-spin text-white text-lg" /> :  'VERIFY EMAIL'}
             </button>
