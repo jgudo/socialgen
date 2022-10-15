@@ -1,4 +1,4 @@
-# Social Geb
+# Social Gen
 
 A facebook/instagram-like inspired social media. This pet project is the rebranding of the old project 'Foodie'
 
@@ -28,16 +28,16 @@ This web app consists of a basic features/functionalities of a socia media
 
 ## Technologies
 
-| Front End    | Back End             |
-| ------------ | -------------------- |
-| React 17.0.1 | Node 12.18.1         |
-| TypeScript   | MongoDB              |
-| Redux        | Mongoose             |
-| Redux-Saga   | SocketIO             |
-| React Router | Express JS           |
-| TailwindCSS  | Passport JS          |
-| PostCSS      | Google Cloud Storage |
-| Axios        |                      |
+| Front End    | Back End     |
+| ------------ | ------------ |
+| React 17.0.1 | Node 12.18.1 |
+| TypeScript   | MongoDB      |
+| Redux        | Mongoose     |
+| Redux-Saga   | SocketIO     |
+| React Router | Express JS   |
+| TailwindCSS  | Passport JS  |
+| PostCSS      | Cloudinary   |
+| Axios        |              |
 
 ## Installation
 
