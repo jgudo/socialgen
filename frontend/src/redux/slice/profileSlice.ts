@@ -37,22 +37,30 @@ export const profileSlice = createSlice({
       } as any
     },
     updateCoverPhoto: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          coverPhoto: action.payload!
+      if (state.data) {
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            coverPhoto: action.payload
+          }
         }
       }
+
+      return state;
     },
     updateProfilePicture: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          profilePicture: action.payload
+      if (state.data) {
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            profilePicture: action.payload
+          }
         }
       }
+
+      return state;
     },
     updateProfilePostLikes: (state, action: PayloadAction<{ postID: string, state: boolean, likesCount: number }>) => {
       return {

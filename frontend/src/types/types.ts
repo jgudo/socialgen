@@ -99,7 +99,7 @@ export interface IChatItemsState {
     username: string;
     id: string;
     offset: number;
-    profilePicture?: Record<string, any>;
+    profilePicture?: string | Record<string, any>;
     fullname: string;
     minimized: boolean;
     chats: IMessage[]
@@ -124,9 +124,9 @@ export interface IProfile {
         gender: string;
     },
     isEmailValidated: boolean;
-    profilePicture?: Record<string, any>;
+    profilePicture?: string | Record<string, any>;
     isOwnProfile: boolean;
-    coverPhoto?: Record<string, any>;
+    coverPhoto?: string | Record<string, any>;
     dateJoined: Date | string;
     followingCount: number;
     followersCount: number;

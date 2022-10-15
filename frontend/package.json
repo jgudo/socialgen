@@ -38,7 +38,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=production vite",
-    "build": "tsc && cross-env VITE_NODE_ENV=production vite build cd dist && cp index.html 404.html",
+    "build": "tsc && cross-env VITE_NODE_ENV=production vite build && cd dist && cp index.html 404.html",
     "serve": "vite preview"
   },
   "proxy": "http://localhost:9000",

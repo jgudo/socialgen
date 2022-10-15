@@ -132,7 +132,7 @@ export const startRegister =  createAsyncThunk<
 
 export const startLogout =  createAsyncThunk<
   { success: boolean },
-  Function,
+  Function | void,
   { rejectValue: IError, dispatch: AppDispatch}
   >('LOGOUT', async (payload, { rejectWithValue, dispatch }) => {
   try {

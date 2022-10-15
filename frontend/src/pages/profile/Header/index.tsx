@@ -10,7 +10,7 @@ import { initiateChat } from '~/redux/slice/chatSlice';
 import { updateCoverPhoto, updateProfilePicture } from '~/redux/slice/profileSlice';
 import { useAppDispatch } from '~/redux/store/store2';
 import { uploadPhoto } from '~/services/api';
-import { IChatItemsState, IImage, IProfile, IUser } from "~/types/types";
+import { IImage, IProfile, IUser } from "~/types/types";
 import CoverPhotoOverlay from './CoverPhotoOverlay';
 import Tabs from './Tabs';
 
@@ -122,7 +122,7 @@ const Header: React.FC<IProps> = ({ profile, auth }) => {
       id: profile.id,
       fullname: profile.fullname || '',
       profilePicture: profile.profilePicture
-    } as IChatItemsState));
+    }));
 
     if (window.screen.width < 1024) {
       history.push(`/chat/${profile.username}`);

@@ -12,7 +12,7 @@ interface IProps {
 
 const CommentInput = forwardRef<HTMLInputElement, IProps>((props, ref) => {
     const { isUpdateMode, isSubmitting, isLoading, ...rest } = props;
-    const userPicture = useSelector((state: IRootState) => state.auth.profilePicture);
+    const userPicture = useSelector((state: IRootState) => state.auth?.profilePicture);
 
     useEffect(() => {
         ref && (ref as MutableRefObject<HTMLInputElement>).current.focus();
@@ -20,7 +20,7 @@ const CommentInput = forwardRef<HTMLInputElement, IProps>((props, ref) => {
 
     return (
         <div className={`flex items-center w-full`}>
-            {!isUpdateMode && <Avatar url={userPicture?.url} className="mr-2 flex-shrink-0" size="sm" />}
+            {!isUpdateMode && <Avatar url={typeof userPicture === 'string' ? userPicture : userPicture?.url} className="mr-2 flex-shrink-0" size="sm" />}
             <div className="flex-grow">
                 <input
                     {...rest}

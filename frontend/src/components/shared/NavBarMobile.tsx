@@ -8,7 +8,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { Messages, Notification } from "~/components/main";
 import { Avatar, SearchInput, ThemeToggler } from "~/components/shared";
 import { LOGIN, REGISTER, SUGGESTED_PEOPLE } from "~/constants/routes";
-import { IChatItemsState, IProfile, IUser } from "~/types/types";
+import { IProfile, IUser } from "~/types/types";
 
 interface IProps {
   isAuth: boolean;
@@ -27,7 +27,7 @@ const NavBarMobile: React.FC<IProps> = ({ theme, isAuth, auth, openModal }) => {
     setOpenMenu(false);
   }
 
-  const clickSearchItemCallback = (user: IChatItemsState | IProfile) => {
+  const clickSearchItemCallback = (user: IProfile) => {
     setOpenSearch(false);
     history.push(`/user/${user.username}`);
   }
@@ -105,7 +105,7 @@ const NavBarMobile: React.FC<IProps> = ({ theme, isAuth, auth, openModal }) => {
             <CloseOutlined style={{ fontSize: '20px' }} />
           </div>
         </div>
-        {isAuth ? (
+        {isAuth && auth ? (
           <ul className="divide-y divide-gray-100 dark:divide-gray-800">
             <li className="px-4 py-3 pb-4 cursor-pointer hover:bg-indigo-100 dark:hover:bg-indigo-1100">
               <Link
@@ -113,7 +113,7 @@ const NavBarMobile: React.FC<IProps> = ({ theme, isAuth, auth, openModal }) => {
                 onClick={onClickMenuItem}
                 to={`/user/${auth?.username}`}
               >
-                <Avatar url={typeof auth?.profilePicture === 'string' ? auth?.profilePicture : auth?.profilePicture?.url} size="lg" className="mr-2" />
+                <Avatar url={typeof auth.profilePicture === 'string' ? auth.profilePicture : auth.profilePicture?.url} size="lg" className="mr-2" />
                 <div className="flex flex-col">
                   <span>{auth?.username}</span>
                   <span className="text-gray-400 text-xs">View Profile</span>

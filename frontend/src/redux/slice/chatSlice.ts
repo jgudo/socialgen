@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IChatItemsState, IChatState, IMessage, IProfile } from '~/types/types';
+import { IChatItemsState, IChatState, IMessage, PartialBy } from '~/types/types';
 
 const initialState: IChatState = {
   active: '',
@@ -52,10 +52,10 @@ export const chatSlice = createSlice({
         })
       }
     },
-    initiateChat: (state, action: PayloadAction<IChatItemsState | IProfile>) => {
+    initiateChat: (state, action: PayloadAction<PartialBy<IChatItemsState, 'offset' | 'minimized' | 'chats'>>) => {
       const exists = state.items.some(chat => (chat.id as unknown) === action.payload.id);
       const newChatItem = {
-          username: action.payload.username,
+          username: action.payload!.username,
           id: action.payload.id,
           profilePicture: action.payload.profilePicture,
           minimized: false,

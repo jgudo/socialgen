@@ -4,12 +4,12 @@ import { FiSearch } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import { Avatar, Loader } from '~/components/shared';
 import { search } from '~/services/api';
-import { IChatItemsState, IError, IProfile } from '~/types/types';
+import { IError, IProfile } from '~/types/types';
 
 
 interface IProps {
   floatingResult?: boolean;
-  clickItemCallback?: (user: IChatItemsState | IProfile) => void;
+  clickItemCallback?: (user: IProfile) => void;
   showNoResultMessage?: boolean;
   inputClassName?: string;
   preventDefault?: boolean;
@@ -71,7 +71,7 @@ const SearchInput: React.FC<IProps> = (props) => {
     e.target.select();
   }
 
-  const onClickItem = (user: IChatItemsState | IProfile) => {
+  const onClickItem = (user: IProfile) => {
     if (props.clickItemCallback) {
       props.clickItemCallback(user);
     } else {
@@ -119,7 +119,7 @@ const SearchInput: React.FC<IProps> = (props) => {
               onClick={() => onClickItem(user)}
             >
               <div className="flex items-center">
-                <Avatar url={user.profilePicture?.url} className="mr-2" />
+                <Avatar url={typeof user.profilePicture === 'string' ? user.profilePicture : user.profilePicture?.url} className="mr-2" />
                 <div className="flex flex-col">
                   {user.fullname && <p className="text-xs text-gray-600 dark:text-gray-500">{user.fullname}</p>}
                   <h6 className="mr-10 text-sm max-w-md overflow-ellipsis overflow-hidden dark:text-white">{user.username}</h6>

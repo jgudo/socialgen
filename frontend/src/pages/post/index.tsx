@@ -59,7 +59,7 @@ const Post: React.FC<RouteComponentProps<{ post_id: string; }>> = ({ history, ma
       )}
       {(!isLoading && !error && post) && (
         <div className="pt-20 w-full px-4 laptop:w-2/4 m-auto">
-          <PostItem post={post} likeCallback={likeCallback} />
+          <PostItem post={post} />
         </div>
       )}
       {(!isLoading && error) && (
@@ -76,10 +76,7 @@ const Post: React.FC<RouteComponentProps<{ post_id: string; }>> = ({ history, ma
         </>
       )}
       {/*  ----- ALL PSOST MODALS ----- */}
-      <PostModals
-        deleteSuccessCallback={deleteSuccessCallback}
-        updateSuccessCallback={updateSuccessCallback}
-      />
+      <PostModals  />
     </>
   )
 };
