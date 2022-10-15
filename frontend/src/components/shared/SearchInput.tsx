@@ -103,7 +103,7 @@ const SearchInput: React.FC<IProps> = (props) => {
         onKeyDown={onSearchSubmit}
       />
       {(searchInput && isVisibleSuggestion) && (
-        <div className={` bg-white dark:bg-indigo-1000 shadow-lg rounded-md w-full flex justify-center flex-col overflow-hidden ${props.floatingResult ? 'absolute top-12' : 'relative top-0'}`}>
+        <div className={` bg-white dark:bg-indigo-900 shadow-lg rounded-md w-full flex justify-center flex-col overflow-hidden ${props.floatingResult ? 'absolute top-12' : 'relative top-0'}`}>
           {(!props.showNoResultMessage && !error) && (
             <h6 className="p-4 text-xs border-b dark:text-white border-gray-100 dark:border-gray-800">Search Suggestion</h6>
           )}
@@ -114,14 +114,14 @@ const SearchInput: React.FC<IProps> = (props) => {
           )}
           {(!isSuggesting && !error && suggestions.length !== 0) && suggestions.map((user) => (
             <div
-              className="hover:bg-indigo-100 dark:hover:bg-indigo-900 p-2 cursor-pointer"
+              className="hover:bg-indigo-100 dark:hover:bg-indigo-950 p-2 cursor-pointer"
               key={user.id}
               onClick={() => onClickItem(user)}
             >
               <div className="flex items-center">
                 <Avatar url={typeof user.profilePicture === 'string' ? user.profilePicture : user.profilePicture?.url} className="mr-2" />
                 <div className="flex flex-col">
-                  {user.fullname && <p className="text-xs text-gray-600 dark:text-gray-500">{user.fullname}</p>}
+                  {user.fullname && <p className="text-xs text-gray-600 dark:text-gray-400">{user.fullname}</p>}
                   <h6 className="mr-10 text-sm max-w-md overflow-ellipsis overflow-hidden dark:text-white">{user.username}</h6>
                 </div>
               </div>

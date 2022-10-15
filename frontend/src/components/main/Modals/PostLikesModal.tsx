@@ -73,7 +73,7 @@ const PostLikesModal: React.FC<IProps> = (props) => {
         closeIcon: 'ModalCloseIcon',
       }}
     >
-      <div className="relative transition-all min-w-15rem">
+      <div className="relative transition-all min-w-[320px]">
         {(error && likes.length === 0) && (
           <span className="p-4 bg-red-100 text-red-500 block">
             {error.error.message}
