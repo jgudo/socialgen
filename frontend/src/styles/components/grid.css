@@ -1,0 +1,29 @@
+.grid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.custom-grid {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-gap: 2px;
+    overflow:hidden;
+}
+
+.custom-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+.custom-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.custom-grid-rows-2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 50%);
+}

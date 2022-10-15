@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display Regular');
+  src: url('/assets/fonts/SF-Pro-Display-Regular');
+  src: url('/assets/fonts/SF-Pro-Display-Regular?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/SF-Pro-Display-Regular.woff') format('woff'),
+    url('/assets/fonts/SF-Pro-Display-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display Medium');
+  src: url('/assets/fonts/SF-Pro-Display-Medium');
+  src: url('/assets/fonts/SF-Pro-Display-Medium?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/SF-Pro-Display-Medium.woff') format('woff'),
+    url('/assets/fonts/SF-Pro-Display-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Product Sans';
+  src: local('Product Sans');
+  src: url('/assets/fonts/ProductSans-Bold.eot');
+  src:  url('/assets/fonts/ProductSans-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}

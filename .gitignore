@@ -1,0 +1,17 @@
+node_modules/
+frontend/.env
+frontend/.env-dev
+frontend/.env-prod
+frontend/.env.development
+frontend/.env.production
+frontend/node_modules
+frontend/dist
+frontend/.eslintcache
+server/.env
+server/.env-dev
+server/.env-prod
+server/.env
+server/build
+server/uploads
+server/node_modules
+yarn-error.log

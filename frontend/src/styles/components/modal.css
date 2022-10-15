@@ -1,0 +1,66 @@
+.ModalOverlay {
+  background: rgba(0, 0, 0, 0.5);
+  animation-fill-mode: forwards  !important;
+}
+
+.Modal {
+  background: #fff;
+  border-radius: 6px;
+  position: relative;
+  max-width: 1330px !important;
+  max-height: 90vh;
+  outline: none;
+  padding: 0;
+  z-index: 99999;
+  overflow-y: hidden;
+  animation-fill-mode: forwards  !important;
+  @apply dark:bg-indigo-1000 dark:border dark:border-indigo-900;
+}
+
+.ModalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ModalCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  @apply dark:fill-white;
+
+  &:hover {
+    @apply bg-gray-200 dark:bg-indigo-950;
+  }
+
+  &:focus {
+    @apply bg-gray-300 dark:bg-indigo-1000;
+  }
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+.ril__toolbarSide {
+  display: flex;
+  align-items: center;
+}
+
+.ril__navButtons {
+  position: absolute !important;
+  @apply !bg-transparent;
+
+  &:focus {
+    @apply !ring-0 !outline-none;
+  }
+}
+
+.ril__builtinButton {
+  @apply !bg-transparent;
+
+  &:focus {
+    @apply !ring-0;
+  }
+}

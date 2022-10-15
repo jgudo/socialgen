@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f9f9f9;
+  --modalBackground: #fff;
+  --modalOverlayBackground: rgba(0, 0, 0, .3);
+  --scrollBarTrackBg: #cacaca;
+}
+
+:root.dark {
+  --background: #08070f;
+  --modalBackground: #100f17;
+  --modalOverlayBackground: rgba(0, 0, 0, .7);
+  --scrollBarTrackBg: #1e1c2a;
+}
+
+@layer base {
+
+  h1,
+  h2 {
+    @apply font-bold;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium;
+  }
+
+  h1 {
+    @apply text-4xl leading-loose;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  a {
+    @apply text-indigo-600;
+  }
+
+  button,
+  button[type=button],
+  button[type=submit] {
+    @apply relative flex justify-center py-3 px-4 border outline-none border-transparent text-sm font-medium rounded-full text-white bg-indigo-600;
+
+    &:disabled {
+      @apply opacity-50 cursor-not-allowed;
+    }
+
+    &:hover {
+      @apply bg-indigo-700;
+    }
+
+    &:focus {
+      @apply bg-indigo-900;
+      @apply outline-none;
+    }
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  textarea {
+    @apply appearance-none outline-none rounded-full ring-transparent relative block w-full px-6 py-3 border border-gray-400 placeholder-gray-500 text-gray-900;
+
+    &:read-only {
+      @apply opacity-50;
+    }
+
+    &:focus {
+      @apply border-indigo-100 z-10;
+    }
+
+    &:disabled:focus:hover {
+      @apply cursor-not-allowed
+    }
+  }
+
+  input[type=checkbox] {
+    @apply h-4 w-4 text-indigo-600 border-indigo-500 rounded;
+
+    &:disabled:hover {
+      @apply cursor-not-allowed;
+    }
+
+    &:read-only {
+      @apply opacity-50;
+    }
+
+    &:focus {
+      @apply ring-0 outline-none;
+    }
+  }
+
+  textarea {
+    @apply rounded-md;
+    @apply resize-none;
+  }
+
+  label {
+    @apply text-gray-500;
+    @apply text-sm;
+  }
+
+  select {
+    @apply border-gray-300;
+    @apply rounded-full;
+    @apply px-4 py-3;
+  }
+}
+
+@layer utilities {
+  .scrollbar {
+    scrollbar-color: white;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--scrollBarTrackBg);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply bg-gray-500;
+      border-radius: 10px;
+
+      &:hover {
+        @apply bg-indigo-500;
+      }
+    }
+  }
+}
+
+@layer components {
+  @responsive {
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
+    }
+
+    .text-shadow-md {
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    .text-shadow-lg {
+      text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .text-shadow-none {
+      text-shadow: none;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'SF Pro Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  line-height: 1.6;
+  @apply bg-[#f7f7f7] dark:bg-indigo-1100;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.anticon {
+  @apply inline-flex items-center justify-center;
+}

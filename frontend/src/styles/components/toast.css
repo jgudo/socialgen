@@ -1,0 +1,50 @@
+.Toastify__toast {
+  @apply font-sans text-sm;
+}
+
+.Toastify__toast--success {
+  @apply bg-green-500 text-white;
+}
+
+.Toastify__toast--error {
+  @apply bg-red-500 text-white;
+}
+
+.Toastify__toast--warning {
+  @apply bg-orange-500 text-white;
+}
+
+.Toastify__toast-theme--dark {
+  @apply text-white;
+}
+
+.Toastify__toast--info {
+  @apply bg-gray-100 text-gray-700 border border-gray-200;
+
+  .Toastify__toast-icon svg {
+    fill: #6a6a6a;
+  }
+
+  .Toastify__close-button {
+    & > svg {
+      fill: #6a6a6a;
+    }
+  }
+}
+
+.Toastify__toast-icon svg {
+  fill: white;
+}
+
+.Toastify__close-button {
+  background: transparent !important;
+  opacity: 100%;
+
+  &:hover {
+    background: transparent;
+    opacity: 50%
+  }
+  & > svg {
+    fill: white;
+  }
+}
