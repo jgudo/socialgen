@@ -38,7 +38,9 @@ const httpRequest = <T>(req: AxiosRequestConfig): Promise<T> => {
 
       resolve(request.data.data)
     } catch (e: any) {
-      reject(e?.response?.data || {});
+      reject(e?.response?.data || {
+        status_code: 500
+      });
     }
   });
 }

@@ -55,20 +55,21 @@ const PasswordReset: React.FC = () => {
   return (
     <div className="min-h-screen flex bg-white">
       <div
-        className="relative w-full h-screen laptop:p-8 hidden items-center justify-center laptop:flex bg-[#3982ad]"
+        className="relative w-full h-screen laptop:p-8 items-center justify-center flex bg-white laptop:bg-[#3982ad]"
       >
         <LazyImage
           placeholder="/assets/bg-1-min.jpg"
           uri="/assets/bg-1.jpg"
-          render={(src: any, style: any) => <img src={src} className="w-full h-full object-cover absolute top-0 left-0" alt="" />}
+          render={(src: any, style: any) => <img src={src}
+          className="w-full h-full object-cover absolute top-0 left-0 hidden laptop:block" alt="" />}
         />
-        <div className="w-full h-full absolute top-0 left-0 z-0 backdrop-filter backdrop-blur-lg  bg-opacity-90 dark:bg-opacity-30" />
+        <div className="w-full h-full hidden laptop:block absolute top-0 left-0 z-0 backdrop-filter backdrop-blur-lg  bg-opacity-90 dark:bg-opacity-30" />
         {/* --- LOGO --- */}
-        <Link className="absolute left-8 top-8" to="/">
+        <Link className="absolute left-8 top-8 hidden laptop:block" to="/">
           <img src="/assets/logo-light.svg" alt="Foodie Logo" className="w-32" />
         </Link>
         <a
-          className="animate-fade absolute bottom-8 left-8 text-1xs text-white underline"
+          className="animate-fade absolute bottom-8 left-8 text-1xs text-white underline hidden laptop:block"
           target="_blank"
           rel="noreferrer"
           href="https://www.pexels.com/photo/3-women-and-2-men-sitting-on-white-concrete-fence-4880409/"
@@ -81,7 +82,7 @@ const PasswordReset: React.FC = () => {
             <img
               src="/assets/logo.svg"
               alt="Foodie Logo"
-              className="w-24 relative mx-auto laptop:hidden"
+              className="w-12 relative mx-auto laptop:hidden"
             />
           </Link>
           {error && (

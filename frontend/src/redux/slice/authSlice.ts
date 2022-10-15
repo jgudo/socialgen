@@ -4,7 +4,7 @@ import { history } from '~/App';
 import { LOGIN } from '~/constants/routes';
 import { checkSession, login, logout, recoverPassword, register, resetPassword, sendVerificationMail } from '~/services/api';
 import socket from '~/socket/socket';
-import { IError, IUser } from '~/types/types';
+import { IError, IRootState, IUser } from '~/types/types';
 import { AppDispatch } from '../store/store2';
 import { clearChat } from './chatSlice';
 import { setError } from './errorSlice';
@@ -39,8 +39,6 @@ export const authSlice = createSlice({
     });
 
     builder.addCase(startLogout.fulfilled, (state, action) => {
-      socket.emit('userDisconnect', state!.id);
-
       return null;
     });
   },
@@ -133,19 +131,26 @@ export const startRegister =  createAsyncThunk<
 export const startLogout =  createAsyncThunk<
   { success: boolean },
   Function | void,
-  { rejectValue: IError, dispatch: AppDispatch}
-  >('LOGOUT', async (payload, { rejectWithValue, dispatch }) => {
+  { rejectValue: IError, dispatch: AppDispatch, getState: any}
+  >('LOGOUT', async (payload, { rejectWithValue, getState, dispatch }) => {
   try {
-    dispatch(setLoading({ field: 'isLoggingOut', value: true }));
-    const res = await logout();
+    const { auth } = getState() as IRootState;
 
-    dispatch(setLoading({ field: 'isLoggingOut', value: false }));
-    dispatch(clearNewsFeed());
-    dispatch(clearChat());
+    if (auth) {
+      socket.emit('userDisconnect', auth.id);
+      dispatch(setLoading({ field: 'isLoggingOut', value: true }));
+      const res = await logout();
 
-    payload && payload();
 
-    return res;
+      dispatch(setLoading({ field: 'isLoggingOut', value: false }));
+      dispatch(clearNewsFeed());
+      dispatch(clearChat());
+
+      payload && payload();
+      return res;
+    }
+
+    return { success: false };
   } catch (err) {
     dispatch(setLoading({ field: 'isLoggingOut', value: false }));
     dispatch(setError({ field: 'logoutError', value: err as IError }));

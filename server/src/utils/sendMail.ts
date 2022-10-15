@@ -168,7 +168,7 @@ const renderEmailTemplate = (content: string) => {
                                                 <tbody>
                                                     <tr>
                                                     <td style="font-size:6px; line-height:10px; padding:0px 0px 0px 0px;" valign="top" align="center">
-                                                        <img class="companyLogo" src="https://pelco1.org.ph/assets/images/logo.png" alt="" style="width:80px; height: 80px;">
+                                                        <img class="companyLogo" src="https://socialgen.vercel.app/assets/logo.png" alt="" style="width:80px; height: 80px;">
                                                     </td>
                                                     </tr>
                                                     <tr>

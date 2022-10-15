@@ -144,7 +144,7 @@ const Home: React.FC<IProps> = (props) => {
             <PostLoader />
           </div>
         )}
-        {(!props.isAuth && !state.isLoadingFeed) && (
+        {(!props.isAuth && !state.isLoadingFeed && (state.error?.status_code || 0) < 500) && (
           <div className="px-4 laptop:px-0 py-4 mb-4">
             <h2 className="dark:text-white text-gray-700">Public posts that might interest you.</h2>
           </div>
