@@ -15,7 +15,7 @@ const SideMenu  = () => {
     <ul className="overflow-hidden bg-white dark:bg-indigo-1000 laptop:shadow-md laptop:rounded-md ">
       <li className="px-4 py-3 cursor-pointer hover:bg-indigo-100 dark:hover:bg-indigo-900">
         <Link to={`/user/${username}`} className="flex items-center text-black">
-          <Avatar url={profilePicture as string} className="mr-4" />
+          <Avatar url={typeof profilePicture === 'string' ? profilePicture : profilePicture?.url} className="mr-4" />
           <h6 className="text-sm dark:text-white">My Profile</h6>
         </Link>
       </li>
