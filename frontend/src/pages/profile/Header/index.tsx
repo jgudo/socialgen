@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CropProfileModal, FollowButton } from '~/components/main';
 import { Loader } from '~/components/shared';
+import { convertHttps } from '~/helpers/utils';
 import { useFileHandler, useModal } from '~/hooks';
 import { updateAuthPicture } from '~/redux/slice/authSlice';
 import { initiateChat } from '~/redux/slice/chatSlice';
@@ -153,7 +154,7 @@ const Header: React.FC<IProps> = ({ profile, auth }) => {
         <img
           alt=""
           className="w-full h-full object-cover"
-          src={coverPhoto.imageFile.url || (typeof profile.coverPhoto === 'string' ? profile.coverPhoto : profile.coverPhoto?.url) || `/assets/default_cover.jpg`}
+          src={coverPhoto.imageFile.url || (convertHttps(typeof profile.coverPhoto === 'string' ? profile.coverPhoto : profile.coverPhoto?.url)) || `/assets/default_cover.jpg`}
         />
       </div>
       <div className="laptop:px-6% w-full relative flex mt-2 laptop:transform laptop:-translate-y-2/4">
@@ -165,7 +166,7 @@ const Header: React.FC<IProps> = ({ profile, auth }) => {
 
                 className="w-full h-full laptop:w-60 laptop:h-60 !bg-cover !bg-no-repeat rounded-full border-4 border-white dark:border-indigo-1000 overflow-hidden"
                 style={{
-                  background: `#f7f7f7 url(${typeof profile.profilePicture === 'string' ? profile.profilePicture : profile.profilePicture?.url || '/assets/avatar_placeholder.png'})`
+                  background: `#f7f7f7 url(${convertHttps(typeof profile.profilePicture === 'string' ? profile.profilePicture : profile.profilePicture?.url) || '/assets/avatar_placeholder.png'})`
                 }}
               >
                 {isUploadingProfileImage && (
