@@ -223,7 +223,7 @@ export const sendVerificationMail = (params: IMailParams) => {
                 await sendGridMail.send({
                     to: params.email,
                     from: {
-                        email: 'consumer-portal@pelco1.org.ph',
+                        email: 'julius.g@pelco1.org.ph',
                         name: 'Social Gen'
                     }, // Use the email address or domain you verified above
                     subject: 'Social Gen - Verify your email address',
@@ -332,7 +332,7 @@ export const sendPasswordResetInstructionMail = (params: IMailParamsReset) => {
                 await sendGridMail.send({
                     to: params.email,
                     from: {
-                        email: 'consumer-portal@pelco1.org.ph',
+                        email: 'julius.g@pelco1.org.ph',
                         name: 'Social Gen'
                     }, // Use the email address or domain you verified above
                     subject: 'Social Gen - Reset your password',
