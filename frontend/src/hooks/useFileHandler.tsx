@@ -38,8 +38,8 @@ const useFileHandler = <T extends unknown>(type = "multiple", initState: T): IFi
         if (!regex.exec(val)) {
             toast.error('File type must be JPEG or PNG', { hideProgressBar: true });
             setFileLoading(false);
-        } else if (size > 2) {
-            toast.error('File size exceeded 2mb', { hideProgressBar: true });
+        } else if (size > 5) {
+            toast.error('File size exceeded 5mb', { hideProgressBar: true });
             setFileLoading(false);
         } else if (type === 'single') {
             const file = event.target.files[0] as File;
