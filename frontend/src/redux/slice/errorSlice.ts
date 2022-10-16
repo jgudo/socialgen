@@ -20,6 +20,8 @@ const initialState: TErrorState = {
   recoverPassword: null,
   resetPassword: null,
 
+  fetchDevError: null
+
 }
 
 export const errorSlice = createSlice({

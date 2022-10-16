@@ -2,21 +2,20 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { UserCard } from "~/components/main";
 import { UserLoader } from "~/components/shared";
-import { startFetchProfile } from "~/redux/slice/profileSlice";
+import { startFetchDev } from "~/redux/slice/profileSlice";
 import { useAppDispatch } from "~/redux/store/store2";
 import { IRootState } from "~/types/types";
 
 const DevCard = () => {
   const dispatch = useAppDispatch();
-  const { isLoading, profile, auth } = useSelector((state: IRootState) => ({
-    auth: state.auth,
+  const { isLoading, profile } = useSelector((state: IRootState) => ({
     profile: state.profile.developer,
-    isLoading: state.loading.isFetchingProfile
+    isLoading: state.loading.isFetchingDev
   }))
 
   useEffect(() => {
     if (!profile) {
-      dispatch(startFetchProfile('jgudo'));
+      dispatch(startFetchDev());
     }
   }, []);
 

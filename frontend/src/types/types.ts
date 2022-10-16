@@ -306,6 +306,8 @@ export type TLoadingField =
   | 'isRecoveringPassword'
   | 'isResettingPassword'
 
+  | 'isFetchingDev'
+
 export type TErrorField =
   | 'checkSessionError'
   | 'loginError'
@@ -324,3 +326,5 @@ export type TErrorField =
   | 'sendVerificationMail'
   | 'recoverPassword'
   | 'resetPassword'
+
+  | 'fetchDevError'

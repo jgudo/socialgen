@@ -11,6 +11,7 @@ import { setError } from './errorSlice';
 import { setLoading } from './loadingSlice';
 import { clearNewsFeed } from './newsFeedSlice';
 import { setVerificationMailError, setVerificationMailSentStatus } from './preferenceSlice';
+import { clearProfile } from './profileSlice';
 
 type TAuthState = IUser | null;
 
@@ -150,6 +151,7 @@ export const startLogout =  createAsyncThunk<
       dispatch(setLoading({ field: 'isLoggingOut', value: false }));
       dispatch(clearNewsFeed());
       dispatch(clearChat());
+      dispatch(clearProfile());
 
       payload && payload();
       return res;

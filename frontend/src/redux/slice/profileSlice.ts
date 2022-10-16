@@ -120,13 +120,21 @@ export const profileSlice = createSlice({
         postsOffset: action.payload
       }
     },
+    clearProfile: (state, action: PayloadAction) => {
+      return initialState;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(startFetchProfile.fulfilled, (state, action: PayloadAction<IProfile>) => {
       return {
         ...state,
         data: action.payload,
-        developer: action.payload.username === 'jgudo' ? action.payload : state.developer
+      };
+    });
+    builder.addCase(startFetchDev.fulfilled, (state, action: PayloadAction<IProfile>) => {
+      return {
+        ...state,
+        developer: action.payload,
       };
     });
     builder.addCase(startGetPosts.fulfilled, (state, action: PayloadAction<IPost[]>) => {
@@ -163,6 +171,31 @@ export const startFetchProfile = createAsyncThunk<
     } catch (err) {
       dispatch(setLoading({ field: 'isFetchingProfile', value: false }));
       dispatch(setError({ field: 'fetchProfileError', value: err as IError }));
+
+      return rejectWithValue(err as IError);
+    }
+  }
+);
+
+export const startFetchDev = createAsyncThunk<
+  IProfile,
+  void,
+  { rejectValue: IError, dispatch: AppDispatch }
+>(
+  'FETCH_DEV_PROFILE',
+  async (payload, { dispatch, rejectWithValue }) => {
+    try {
+      dispatch(setLoading({ field: 'isFetchingDev', value: true }));
+      dispatch(setError({ field: 'fetchDevError', value: null }));
+
+      const user = await getUser('jgudo');
+
+      dispatch(setLoading({ field: 'isFetchingDev', value: false }));
+
+      return user;
+    } catch (err) {
+      dispatch(setLoading({ field: 'isFetchingDev', value: false }));
+      dispatch(setError({ field: 'fetchDevError', value: err as IError }));
 
       return rejectWithValue(err as IError);
     }
@@ -263,6 +296,6 @@ export const startGetBookmarks =  createAsyncThunk<
 
 export const { updateCoverPhoto, updateProfilePostLikes, updatePostFromProfile,
     addPostToProfile, deletePostFromProfile, updateProfilePicture,
-    updateProfileInfo, setPosts, setPostsOffset } = profileSlice.actions
+    updateProfileInfo, setPosts, setPostsOffset, clearProfile } = profileSlice.actions
 
 export default profileSlice
