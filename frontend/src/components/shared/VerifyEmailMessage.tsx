@@ -1,7 +1,9 @@
 import React from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { IoMdClose } from 'react-icons/io';
 import { useSelector } from 'react-redux';
 import { startSendVerificationEmail } from '~/redux/slice/authSlice';
+import { closeVerificationMessage } from '~/redux/slice/preferenceSlice';
 import { useAppDispatch } from '~/redux/store/store2';
 import { IRootState } from '~/types/types';
 
@@ -16,7 +18,8 @@ const VerifyEmailMessage: React.FC<IProps> = ({ url, size, className }) => {
     auth: state.auth,
     isSendingVerificationMail: state.loading.isSendingVerificationMail,
     hasSentVerificationMail: state.preference.hasSentVerificationMail,
-    sendVerificationMailError: state.preference.sendVerificationMailError
+    sendVerificationMailError: state.preference.sendVerificationMailError,
+    isOpenVerificationMessage: state.preference.isOpenVerificationMessage,
   }));
   const dispatch = useAppDispatch();
 
@@ -24,10 +27,17 @@ const VerifyEmailMessage: React.FC<IProps> = ({ url, size, className }) => {
     dispatch(startSendVerificationEmail());
   }
 
+  const onClickClose = () => {
+    if (st.isSendingVerificationMail) return;
 
-  if (st.auth && !st.auth?.isEmailValidated) {
+    dispatch(closeVerificationMessage());
+  }
+
+
+  if (st.auth && ((!st.auth?.isEmailValidated && st.isOpenVerificationMessage) || st.isOpenVerificationMessage)) {
     return (
-      <div className="w-full p-2 bg-white dark:bg-indigo-950 flex flex-row justify-center items-center fixed bottom-0 space-x-4">
+      <div className="w-full p-2 bg-white dark:bg-indigo-950 flex flex-row justify-center items-center fixed left-0 bottom-0 space-x-4">
+        <IoMdClose className="text-gray-600 dark:text-gray-500 cursor-pointer shrink-0 hover:opacity-80 relative laptop:absolute laptop:left-4 laptop:top-0 laptop:bottom-0 my-auto" onClick={onClickClose}/>
         {st.hasSentVerificationMail ? (
           <p className="text-green-600 text-sm inline-block font-bold">Verification mail has been sent to your email {st.auth.email}!</p>
         ) : (

@@ -15,7 +15,7 @@ import suggestedPeopleSlice from '../slice/suggestedPeopleSlice';
 const preferenceConfig = {
   key: 'tracking',
   storage,
-  blacklist: ['targetComment', 'targetPost', 'hasSentVerificationMail', 'sendVerificationMailError']
+  blacklist: ['targetComment', 'targetPost', 'hasSentVerificationMail', 'sendVerificationMailError', 'isOpenVerificationMessage']
 };
 
 const persistConfig = {

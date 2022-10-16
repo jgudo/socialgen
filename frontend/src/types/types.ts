@@ -283,6 +283,7 @@ export interface IPreferenceState {
   targetPost: IPost | null;
   hasSentVerificationMail: boolean,
   sendVerificationMailError: any;
+  isOpenVerificationMessage: boolean;
 }
 
 export type TLoadingField =

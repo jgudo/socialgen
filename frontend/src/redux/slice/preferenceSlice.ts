@@ -6,7 +6,8 @@ const initialState: IPreferenceState = {
   targetComment: null,
   targetPost: null,
   hasSentVerificationMail: false,
-  sendVerificationMailError: null
+  isOpenVerificationMessage: true,
+  sendVerificationMailError: null,
 }
 
 export const preferenceSlice = createSlice({
@@ -28,10 +29,13 @@ export const preferenceSlice = createSlice({
     setVerificationMailError: (state, action: PayloadAction<any>) => {
       state.sendVerificationMailError = action.payload;
     },
+    closeVerificationMessage: (state, action: PayloadAction) => {
+      state.isOpenVerificationMessage = false;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTheme, setTargetComment, setTargetPost, setVerificationMailSentStatus, setVerificationMailError } = preferenceSlice.actions
+export const { setTheme, setTargetComment, closeVerificationMessage, setTargetPost, setVerificationMailSentStatus, setVerificationMailError } = preferenceSlice.actions
 
 export default preferenceSlice
