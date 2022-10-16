@@ -7,6 +7,7 @@ import { PageNotFound } from "~/pages";
 import { setPosts, setPostsOffset, startFetchProfile } from "~/redux/slice/profileSlice";
 import { useAppDispatch } from "~/redux/store/store2";
 import { IRootState, IUser } from "~/types/types";
+import DevCard from "../home/DevCard";
 import Header from './Header';
 import * as Tab from './Tabs';
 
@@ -84,6 +85,9 @@ const Profile: React.FC<IProps> = (props) => {
                   <Tab.EditInfo isOwnProfile={state.profile.isOwnProfile} profile={state.profile} />
                 </Route>
               </Switch>
+            </div>
+            <div className="hidden laptop:block laptop:w-1/4 laptop:sticky laptop:top-44 ml-4 space-y-4">
+              <DevCard />
             </div>
           </div>
         </div>
