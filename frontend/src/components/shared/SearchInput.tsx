@@ -95,7 +95,7 @@ const SearchInput: React.FC<IProps> = (props) => {
     <div className={`input-wrapper relative flex flex-col items-center ${props.inputClassName}`}>
       <FiSearch className="text-gray-400 absolute left-3 top-3 z-50" />
       <input
-        className="border-gray-100 !pl-10 !py-2 dark:bg-indigo-950 dark:!border-indigo-900 dark:text-white"
+        className="border-gray-100 !pl-10 !py-2 bg-gray-100 dark:bg-indigo-950 dark:!border-indigo-900 dark:text-white"
         placeholder="Search..."
         type="text"
         onFocus={onFocusInput}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { convertHttps } from '~/helpers/utils';
 
 interface IProps {
   url?: string;
@@ -17,7 +18,7 @@ const Avatar: React.FC<IProps> = ({ url, size, className }) => {
             : size === 'lg'
               ? 'w-12 h-12'
               : 'w-10 h-10'} !bg-cover !bg-no-repeat border border-gray-100 rounded-full ${className}`}
-      style={{ background: `#f8f8f8 url(${url || '/assets/avatar_placeholder.png'})` }}
+      style={{ background: `#f8f8f8 url(${convertHttps(url) || '/assets/avatar_placeholder.png'})` }}
     />
   )
 };

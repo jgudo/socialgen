@@ -34,12 +34,12 @@ const NavBarMobile: React.FC<IProps> = ({ theme, isAuth, auth, openModal }) => {
   }
 
   return isOpenSearch ? (
-    <div className="fixed top-0 left-0 flex w-full items-center bg-indigo-1100 z-9999  px-2 py-2 pr-2 shadow-xl">
+    <div className="fixed top-0 left-0 flex w-full items-center  dark:bg-indigo-1100 z-9999  px-2 py-2 pr-2 shadow-xl">
       <div
         className="p-2 rounded-full flex items-center justify-center cursor-pointer hover:bg-indigo-500"
         onClick={() => setOpenSearch(false)}
       >
-        <ArrowLeftOutlined className="text-white" style={{ fontSize: '18px' }} />
+        <ArrowLeftOutlined className="dark:text-white" style={{ fontSize: '18px' }} />
       </div>
       <SearchInput
         clickItemCallback={clickSearchItemCallback}

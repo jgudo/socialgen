@@ -82,7 +82,7 @@ const Home: React.FC<IProps> = (props) => {
       <div className="w-full laptop:w-2/4 relative">
         {/* --- CREATE POST INPUT ---- */}
         {props.isAuth && (
-          <div className="flex items-center justify-start mb-4 p-4 rounded-md bg-white shadow-sm dark:bg-indigo-1000">
+          <div className="flex items-center justify-start mb-4 p-4 tablet:rounded-md bg-white shadow-sm dark:bg-indigo-1000">
             <Avatar url={typeof state.auth?.profilePicture === 'string' ? state.auth?.profilePicture : state.auth?.profilePicture?.url} className="mr-2" />
             <div className="flex-grow">
               <input
@@ -112,6 +112,12 @@ const Home: React.FC<IProps> = (props) => {
             openModal={openModal}
             closeModal={closeModal}
           />
+        )}
+        {/*  ----- DEV CARD FOR MOBILE ONLY -------- */}
+        {(props.isAuth) && (
+          <div className="block laptop:hidden mb-4">
+            <DevCard />
+          </div>
         )}
         {(state.error && state.newsFeed.items.length === 0 && !state.isCreatingPost) && (
           <div className="flex flex-col w-full min-h-24rem px-8 items-center justify-center text-center">
