@@ -36,6 +36,16 @@ const Info = () => {
           )}
         </div>
         <div className="grid grid-cols-3 py-4">
+          <h5 className="dark:text-white">Username</h5>
+          <span className="text-gray-600 dark:text-gray-400 col-span-2">{profile?.username}</span>
+        </div>
+        {isOwnProfile && (
+          <div className="grid grid-cols-3 py-4">
+            <h5 className="dark:text-white">Email Address</h5>
+            <span className="text-gray-600 dark:text-gray-400 col-span-2">{profile?.email}</span>
+          </div>
+        )}
+        <div className="grid grid-cols-3 py-4">
           <h5 className="dark:text-white">Gender</h5>
           {profile?.info.gender ? (
             <span className="text-gray-600 dark:text-gray-400 col-span-2 capitalize">{profile?.info.gender}</span>
