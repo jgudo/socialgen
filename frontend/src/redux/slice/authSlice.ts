@@ -38,6 +38,10 @@ export const authSlice = createSlice({
       return action.payload;
     });
 
+    builder.addCase(startRegister.fulfilled, (state, action: PayloadAction<IUser>) => {
+      return action.payload;
+    });
+
     builder.addCase(startLogout.fulfilled, (state, action) => {
       return null;
     });
@@ -88,7 +92,7 @@ export const startLogin =  createAsyncThunk<
       const user = await login(payload.username, payload.password);
 
       socket.emit('userConnect', user.id);
-      //           yield put(clearNewsFeed());
+      dispatch(clearNewsFeed());
       dispatch(setLoading({ field: 'isLoggingIn', value: false }));
 
       return user;
@@ -116,6 +120,7 @@ export const startRegister =  createAsyncThunk<
 
       socket.emit('userConnect', user.id);
       //           yield put(clearNewsFeed());
+      dispatch(clearNewsFeed());
       dispatch(setLoading({ field: 'isRegistering', value: false }));
 
       return user;
