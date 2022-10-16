@@ -1,7 +1,6 @@
 import { Action, AnyAction, combineReducers, configureStore, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { persistReducer, persistStore } from 'redux-persist';
-import createFilter from 'redux-persist-transform-filter';
 import storage from 'redux-persist/lib/storage';
 import authSlice from '../slice/authSlice';
 import chatSlice from '../slice/chatSlice';
@@ -13,17 +12,17 @@ import preferenceSlice from '../slice/preferenceSlice';
 import profileSlice from '../slice/profileSlice';
 import suggestedPeopleSlice from '../slice/suggestedPeopleSlice';
 
-const persitingReducers = createFilter(
-  `preference.theme`
-);
+const preferenceConfig = {
+  key: 'tracking',
+  storage,
+  blacklist: ['targetComment', 'targetPost', 'hasSentVerificationMail', 'sendVerificationMailError']
+};
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'preference'],
-  transforms: [
-    persitingReducers
-  ]
+  whitelist: ['auth'],
+  blacklist: ['preference']
 };
 
 const combinedReducers = combineReducers({
@@ -31,7 +30,7 @@ const combinedReducers = combineReducers({
   newsFeed: newsFeedSlice.reducer,
   error: errorSlice.reducer,
   loading: loadingSlice.reducer,
-  preference: preferenceSlice.reducer,
+  preference: persistReducer(preferenceConfig, preferenceSlice.reducer),
   chats: chatSlice.reducer,
   modal: modalSlice.reducer,
   profile: profileSlice.reducer,
