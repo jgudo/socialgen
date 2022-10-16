@@ -1,5 +1,6 @@
 import { CameraOutlined, EditOutlined, MessageOutlined } from '@ant-design/icons';
 import React, { useEffect, useRef, useState } from 'react';
+import { BsPatchCheckFill } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { CropProfileModal, FollowButton } from '~/components/main';
@@ -201,7 +202,17 @@ const Header: React.FC<IProps> = ({ profile, auth }) => {
             {/* ---- NAME AND USERNAME */}
             <div className="text-center laptop:text-left mb-4 laptop:mb-0">
               <h2 className="text-3xl dark:text-white">{profile.fullname || `@${profile.username}`}</h2>
-              <span className="text-indigo-700 dark:text-indigo-400">{profile.fullname && `@${profile.username}`}</span>
+              <div className="flex flex-col laptop:flex-row laptop:items-center laptop:space-x-2 space-y-2 laptop:space-y-0">
+                <span className="text-indigo-700 dark:text-indigo-400">{profile.fullname && `@${profile.username}`}</span>
+                {profile.isOwnProfile && (
+                  <div className="flex flex-row items-center space-x-1 justify-center laptop:justify-start">
+                    <BsPatchCheckFill className={profile.isEmailValidated ? `text-green-600 dark:text-green-500` : `text-gray-400 dark:text-gray-600`}/>
+                    <span className={`text-xs ${profile.isEmailValidated ? 'text-green-600 dark:text-green-500' : 'text-gray-400 dark:text-gray-600'}`}>
+                      {profile.isEmailValidated ?  'Email verified' : 'Email not verified'}
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
             {/* ---- FOLLOW/UNFOLLOW/MESSAGE BUTTON */}
             {!profile.isOwnProfile ? (
