@@ -175,7 +175,7 @@ const Notification: React.FC<IProps> = ({ isAuth }) => {
             <div className="flex justify-center py-6">
               <p className="text-gray-400 italic">
                 {error.status_code === 404
-                  ? 'You don\'t notification.'
+                  ? 'You don\'t have notifications.'
                   : (error?.error?.message || 'Something went wrong :(')
                 }
               </p>
