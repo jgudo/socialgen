@@ -34,7 +34,7 @@ const VerifyEmailMessage: React.FC<IProps> = ({ url, size, className }) => {
   }
 
 
-  if (st.auth && ((!st.auth?.isEmailValidated && st.isOpenVerificationMessage) || st.isOpenVerificationMessage)) {
+  if (st.auth && ((!st.auth?.isEmailValidated && st.isOpenVerificationMessage) || (st.auth.isEmailValidated && !st.isOpenVerificationMessage))) {
     return (
       <div className="w-full p-2 bg-white dark:bg-indigo-950 flex flex-row justify-center items-center fixed left-0 bottom-0 space-x-4">
         <IoMdClose className="text-gray-600 dark:text-gray-500 cursor-pointer shrink-0 hover:opacity-80 relative laptop:absolute laptop:left-4 laptop:top-0 laptop:bottom-0 my-auto" onClick={onClickClose}/>
