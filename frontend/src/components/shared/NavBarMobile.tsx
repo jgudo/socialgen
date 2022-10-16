@@ -9,6 +9,7 @@ import { Messages, Notification } from "~/components/main";
 import { Avatar, SearchInput, ThemeToggler } from "~/components/shared";
 import { LOGIN, REGISTER, SUGGESTED_PEOPLE } from "~/constants/routes";
 import { IProfile, IUser } from "~/types/types";
+import VerifyEmailMessage from "./VerifyEmailMessage";
 
 interface IProps {
   isAuth: boolean;
@@ -196,10 +197,16 @@ const NavBarMobile: React.FC<IProps> = ({ theme, isAuth, auth, openModal }) => {
           </ul>
         )}
         {/* --- COPYRIGHT -- */}
-        <span className="text-gray-400 text-xs absolute bottom-8 left-0 right-0 mx-auto text-center">
-          &copy;Copyright {new Date().getFullYear()} Foodie
-        </span>
+        <div className="absolute bottom-24 left-0 right-0 mx-auto ">
+          <span className="text-gray-400 text-xs text-center block">
+            &copy;Copyright {new Date().getFullYear()} Social Gen
+          </span>
+          <span className="text-gray-400 text-sm text-center block">
+            Crafted with ❤️ by <a href="https://juliusguevarra.com">Julius Guevarra</a>
+          </span>
+        </div>
       </div>
+      <VerifyEmailMessage />
     </nav>
   )
 };
